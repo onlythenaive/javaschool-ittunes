@@ -1,0 +1,19 @@
+# Java
+backend/**/*.class
+backend/**/*.jar
+backend/**/*.war
+
+# Gradle
+backend/.gradle/
+backend/build/
+backend/out/
+
+# Gradle Wrapper
+!backend/gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+backend/.idea/
+backend/**/*.iml
+
+# Miscellaneous
+backend/**/*.log

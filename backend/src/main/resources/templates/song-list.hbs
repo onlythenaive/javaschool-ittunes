@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table, th, td {
+           border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+<h1>List of available songs:</h1>
+<table>
+    <thead>
+    <tr>
+        <td>Title</td>
+        <td>Artist</td>
+        <td>Album</td>
+        <td>Genre</td>
+        <td>Year</td>
+        <td>ID</td>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each songs}}
+        <tr>
+            <td>{{this.title}}</td>
+            <td>{{this.artist}}</td>
+            <td>{{this.album}}</td>
+            <td>{{this.genre}}</td>
+            <td>{{this.year}}</td>
+            <td>{{this.id}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+buildscript {
+
+    repositories {
+
+        jcenter()
+
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+mainClassName = 'com.iliagubarev.tsystems.javaschool.ittunes.backend.Application'
+
+shadowJar {
+
+    classifier = null
+}
+
+repositories {
+
+    jcenter()
+}
+
+dependencies {
+
+    // NOTE: Web framework
+    compile     'com.sparkjava:spark-core:2.7.1'
+
+    // NOTE: JSON serialization
+    compile     'com.fasterxml.jackson.core:jackson-annotations:2.9.3'
+    compile     'com.fasterxml.jackson.core:jackson-core:2.9.3'
+    compile     'com.fasterxml.jackson.core:jackson-databind:2.9.3'
+    compile     'com.fasterxml.jackson.module:jackson-module-parameter-names:2.9.3'
+    compile     'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.3'
+    compile     'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.3'
+
+    // NOTE: Text templates
+    compile     'com.github.jknack:handlebars:4.0.6'
+
+    // NOTE: Logger implementation
+    compile     'org.slf4j:slf4j-log4j12:1.7.25'
+
+    // NOTE: For a better codestyle
+    compile     'com.google.guava:guava:23.6-jre'
+
+    // NOTE: Unit-test framework
+    testCompile 'junit:junit:4.12'
+}
