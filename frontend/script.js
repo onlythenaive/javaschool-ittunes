@@ -1,5 +1,4 @@
 
-
 var buttonClicked = (function buttonClicked() {
 
     var data = {
@@ -13,7 +12,7 @@ var buttonClicked = (function buttonClicked() {
     $.ajax({
         url: 'http://localhost:4567/api/songs/',
         method: 'POST',
-        data: data
+        data: JSON.stringify(data)
     }).done(function () {
         alert('AJAX is successful');
     }).fail(function () {
