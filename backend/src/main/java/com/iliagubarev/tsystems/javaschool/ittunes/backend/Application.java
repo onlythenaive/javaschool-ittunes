@@ -50,14 +50,20 @@ public final class Application implements Runnable {
 
         // NOTE: Creates a new Song
         post("/api/songs/", (request, response) -> {
-            final Song song = body(Song.class, request);
-            song.generateId();
-            songs.put(song.id, song);
+            final Song invoice = body(Song.class, request);
+            final Song song = createSong(invoice);
             return json(song, response);
         });
 
         // NOTE: Logs a successful start of application
         LOG.info("Application started on http://localhost:4567");
+    }
+
+    // service method
+    private Song createSong(final Song song) {
+        song.generateId();
+        songs.put(song.id, song);
+        return song;
     }
 
     private void prepareInitialData() {
