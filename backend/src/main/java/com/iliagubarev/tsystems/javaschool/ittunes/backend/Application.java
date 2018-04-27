@@ -48,6 +48,13 @@ public final class Application implements Runnable {
             return html("templates/song-list", model, response);
         });
 
+        // NOTE: Gets a list of all available songs as HTML (partial)
+        get("/song-list-partial", (request, response) -> {
+            final Map<String, Object> model = new HashMap<>();
+            model.put("songs", songs);
+            return html("templates/song-list-partial", model, response);
+        });
+
         // NOTE: Creates a new Song
         post("/api/songs/", (request, response) -> {
             final Song invoice = body(Song.class, request);
