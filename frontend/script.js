@@ -1,6 +1,13 @@
 $(function () {
 // this function runs when DOM is loaded completely
 
+
+    function alertInfo(info) {
+        alert(info);
+    }
+
+
+
     // find the "Add" button in DOM
     var addSongButton = $("#addSong");
 
@@ -23,16 +30,23 @@ $(function () {
             data: JSON.stringify(song)
          }).done(function (result) {
 
-            // when ready and OK -> get updated HTML table with song records
-            $.ajax({
-                method: "GET",
-                url: "http://localhost:4567/song-list-partial"
-            }).done(function (html) {
+             // alert(JSON.stringify(result));
 
-                // when HTML received -> put it inside the prepared container
-                $("#tableContainer").html(html);
-            });
+             var container = $("#tableContainer");
 
+             var songElement = $("<div></div>");
+
+             var spanTitle = $("<span></span>");
+             spanTitle.html("Title: " + result.title);
+             spanTitle.appendTo(songElement);
+
+             var button = $("<button>Get info</button>");
+             button.appendTo(songElement);
+             button.click(function () {
+                 alertInfo(JSON.stringify(result));
+             });
+
+             songElement.appendTo(container);
          }).fail(function (error) {
             // if something went really bad -> show an alert
             alert("Not ok, AJAX failed");
