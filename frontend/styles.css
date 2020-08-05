@@ -1,11 +1,3 @@
 .grid-container {
 
-    display: grid;
-
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-
-    background-color: deeppink;
-    width: 400px;
-    height: 200px;
 }
