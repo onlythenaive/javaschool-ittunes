@@ -3,10 +3,11 @@ backend/**/*.class
 backend/**/*.jar
 backend/**/*.war
 
-# Gradle
+# Gradle/Maven
 backend/.gradle/
 backend/build/
 backend/out/
+backend/target/
 
 # Gradle Wrapper
 !backend/gradle/wrapper/gradle-wrapper.jar
