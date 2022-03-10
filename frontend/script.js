@@ -1,44 +1,43 @@
 
-$(function () {
+$(function() {
 
-	var addSongBtn = $("#addSongButton");
-	addSongBtn.click(function () {
-		
-		var title = $("#songTitle").val();
-		
-		
+	$("#saveButton").click(function() {
+
 		var song = {
 			title: $("#songTitle").val(),
-			album: $("#songAlbum").val(),
 			artist: $("#songArtist").val(),
+			album: $("#songAlbum").val(),
 			genre: $("#songGenre").val(),
 			year: $("#songYear").val()
 		};
-		
+
+		console.log(JSON.stringify(song));
+
 		$.ajax({
-			url: "http://localhost:4567/api/songs/",
-			method: "POST",
-			data: JSON.stringify(song)
-		}).done(function (result) {
-			
-			var container = $("#listContainer");
-			
+			"method": "POST",
+			"url": "http://localhost:4567/api/songs/",
+			"data": JSON.stringify(song)
+		}).done(function(result) {
+
+			var container = $("#elementContainer");
+
 			var songElement = $("<div></div>");
 			songElement.appendTo(container);
-			
+
 			var songTitle = $("<span></span>");
 			songTitle.html("Title: " + result.title);
 			songTitle.appendTo(songElement);
-			
-			var songDetailsBtn = $("<button>Show Details</button>");
-			songDetailsBtn.appendTo(songElement);
-			songDetailsBtn.click(function () {
+
+			var songButton = $("<button>Show Details</button>");
+			songButton.appendTo(songElement);
+			songButton.click(function() {
 				alert(JSON.stringify(result));
 			});
-			
-			
-		}).fail(function (error) {
-			alert(JSON.stringify(error));
-		});		
+
+
+		}).fail(function() {
+			alert("Something went wrong");
+		});
 	});
+
 });
